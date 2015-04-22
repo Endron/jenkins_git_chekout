@@ -1,0 +1,17 @@
+---
+- name: install git
+  apt:
+    name: git
+    state: latest
+  sudo: true
+- name: create folder for git repos
+  file:
+    path: /opt/git
+    owner: "{{ ansible_ssh_user }}"
+    state: directory
+  sudo: true
+- name: clone a repo to have data
+  git:
+    repo: https://github.com/Endron/groovyTryout.git
+    dest: /opt/git/groovyTryout.git
+    bare: true

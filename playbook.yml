@@ -1,0 +1,4 @@
+---
+- hosts: git-servers
+  roles:
+    - git-server
