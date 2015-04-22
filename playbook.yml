@@ -2,3 +2,7 @@
 - hosts: git-servers
   roles:
     - git-server
+
+- hosts: build-servers
+  roles:
+    - build-server

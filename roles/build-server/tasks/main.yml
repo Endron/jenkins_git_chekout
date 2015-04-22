@@ -1,0 +1,27 @@
+---
+- name: add jenkins key
+  apt_key:
+    url: https://jenkins-ci.org/debian/jenkins-ci.org.key
+    state: present
+  sudo: true
+- name: add jenkins repository
+  apt_repository:
+    repo: 'deb http://pkg.jenkins-ci.org/debian binary/'
+    state: present
+  sudo: true
+- name: install jenkins
+  apt:
+    name: jenkins
+    state: latest
+    update_cache: yes
+  sudo: true
+- name: install git
+  apt:
+    name: git
+    state: latest
+  sudo: true
+- name: start jenkins
+  service:
+    name: jenkins
+    state: started
+  sudo: yes
